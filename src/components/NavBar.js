@@ -13,6 +13,7 @@ export function NavBar() {
       <ul className="flex">
         {menuItems.map(({ name, url }) => (
           <Link
+            key={url}
             to={url}
             className="px-4 py-4 hover:bg-purple-700 hover:no-underline"
           >
