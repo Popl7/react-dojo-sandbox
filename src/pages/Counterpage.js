@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { HelloWorld } from "./HelloWorld";
+import { HelloWorld } from "../components/HelloWorld";
 
 export function CounterPage() {
   const [count, setCount] = useState(0);
   const [name, setName] = useState("Dojo");
 
   return (
-    <div className="Counter">
+    <div>
       <button
         type="button"
         className="border p-4 bg-purple-700 border-purple-900 text-white rounded"
