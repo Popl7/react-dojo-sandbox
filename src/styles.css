@@ -32,11 +32,6 @@ h5 {
 h6 {
   font-size: 1em;
 }
-
-a,
-a:visited {
-  color: #44337a;
-}
-a:hover {
-  text-decoration: underline;
+small {
+  font-size: 0.5em;
 }

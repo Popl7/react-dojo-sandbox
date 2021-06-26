@@ -5,7 +5,7 @@ export function NavButton({ to, children }) {
   return (
     <Link
       to={to}
-      className="border w-1/4 px-4 py-3 border-purple-900 rounded-lg hover:bg-purple-900 hover:text-white hover:no-underline text-center"
+      className="border px-8 py-4 bg-purple-900 rounded-lg text-white hover:no-underline text-center text-2xl"
     >
       {children}
     </Link>
@@ -13,11 +13,11 @@ export function NavButton({ to, children }) {
 }
 
 export function PreviousButton({ to }) {
-  return <NavButton to={to}>&lt; previous</NavButton>;
+  return <NavButton to={to}>←</NavButton>;
 }
 
-export function NextButton({ to }) {
-  return <NavButton to={to}>next &gt;</NavButton>;
+export function NextButton({ to, title }) {
+  return <NavButton to={to}>→</NavButton>;
 }
 
 export function NavButtons({ previous, next }) {
