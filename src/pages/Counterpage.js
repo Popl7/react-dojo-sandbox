@@ -9,7 +9,7 @@ export function CounterPage() {
     <div>
       <button
         type="button"
-        className="border p-4 bg-purple-700 border-purple-900 text-white rounded"
+        className="border p-4 bg-purple-800 hover:bg-purple-700 text-white rounded"
         onClick={() => setCount((count) => count + 1)}
       >
         count is: {count}

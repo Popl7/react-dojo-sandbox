@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
-// import { User, auth } from "firebase";
 import firebase from "../firebase";
 import "firebase/auth";
 import "firebase/firestore";
@@ -33,7 +32,6 @@ export const LoginPage = () => {
       .auth()
       .signInWithEmailAndPassword(values.email, values.password)
       .then(res => {
-        // console.log('signInWithEmailAndPassword', res)
         authContext.setUser(res);
         history.push("/");
       })
