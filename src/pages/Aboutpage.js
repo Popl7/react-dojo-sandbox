@@ -1,27 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
 import firebase from "../firebase";
+import { AuthContext } from '../AuthProvider';
 
 export function AboutPage() {
-  const history = useHistory();
-
   const db = firebase.firestore();
-  const userId = firebase.auth().currentUser.uid
-  const citiesRef = db.collection('users').doc(userId).collection("cities");
+  const { user } = React.useContext(AuthContext)
+  const citiesRef = db.collection('users').doc(user.uid).collection("cities");
   const [name, setName] = useState('')
 
   const sharedCitiesRef = db.collection('cities');
   const [sharedName, setSharedName] = useState('')
-
-  const handleClick = (event) => {
-    event.preventDefault();
-    firebase
-      .auth()
-      .signOut()
-      // .then(res => {
-      //   history.push("/login");
-      // })
-  }
 
   const [docs, setDocs] = useState([]);
 
@@ -128,8 +116,6 @@ export function AboutPage() {
   return (
     <div>
       <h1>About</h1>
-      <button className="p-4 border rounded bg-purple-800 text-white" onClick={handleClick}>Logout</button>
-      <br /><br /><br /><br /><br /><br />
 
       <h2>Private</h2>
       <ul>

@@ -1,33 +1,52 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from '../AuthProvider';
+import firebase from "../firebase";
 
 export function NavBar() {
+  const { authenticated } = React.useContext(AuthContext)
+
   const menuItems = [
     { name: "Home", url: "/" },
     { name: "About", url: "/about" },
     { name: "Counter", url: "/counter" }
   ];
 
+  const logout = () => {
+    firebase
+      .auth()
+      .signOut()
+  }
+
   return (
-    <nav className="flex justify-between bg-purple-800 shadow-lg">
+    <nav className="flex justify-between bg-purple-800 shadow-lg items-center">
       <ul className="flex">
         {menuItems.map(({ name, url }) => (
+          <li key={url} className="text-white">
           <Link
-            key={url}
             to={url}
-            className="px-4 py-4 hover:bg-purple-700 hover:no-underline"
-          >
-            <li className="text-white">{name}</li>
+              className="text-white block px-4 py-4 hover:bg-purple-700 hover:no-underline"
+          >{name}
           </Link>
+          </li>
         ))}
       </ul>
-      <ul className="flex h-full bg-purple-800 shadow-lg">
-        <Link
-          to="/help"
-          className="px-4 py-4 hover:bg-purple-700 hover:no-underline"
-        >
-          <li className="text-white">Help</li>
-        </Link>
+      <ul className="flex">
+        <li>
+        {authenticated ? (
+        <button
+              className="text-white block px-4 py-4 hover:bg-purple-700 hover:no-underline"
+          onClick={logout}
+          >Logout
+            </button>
+        ) : (
+              <Link
+                to="/login"
+                className="text-white block px-4 py-4 hover:bg-purple-700 hover:no-underline"
+          >Login
+              </Link>
+          )}
+        </li>
       </ul>
     </nav>
   );
