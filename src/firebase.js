@@ -3,7 +3,7 @@ import firebase from "firebase/app";
 // Add the Firebase products that you want to use
 import "firebase/analytics";
 import "firebase/auth";
-import "firebase/database";
+import "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAHe3mruPCudO6_YOmsLN_nFxO-4Tt-zgk",
@@ -33,8 +33,8 @@ try {
   let features = [
     'analytics',
     'auth',
-    'database',
-    // 'firestore',
+    // 'database',
+    'firestore',
     // 'functions',
     // 'messaging',
     // 'storage',
